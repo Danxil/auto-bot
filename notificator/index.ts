@@ -12,9 +12,12 @@ export default class Notificator {
     private dataRequested;
 
     constructor() {
-        this.serviceBot = new TelegramBot(serviceBotToken, {polling: true});
-        this.bot = new TelegramBot(botToken, {polling: true});
-        
+        try {
+            this.serviceBot = new TelegramBot(serviceBotToken, {polling: true});
+            this.bot = new TelegramBot(botToken, {polling: true});
+        } catch (e) {
+            console.log(e);
+        }
         this.serviceBot.on('message', (msg) => {
             console.log('=======ServiceBot=======chatId', msg.chat.id);
             console.log('=======ServiceBot=======msg', msg.text);
