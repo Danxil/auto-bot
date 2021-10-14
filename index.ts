@@ -6,7 +6,13 @@ import Logger from './logger/logger';
 import { ModelsYearsFetcher } from './ModelsYearsFetcher';
 import { AutoRiaBrand } from './db';
 
-const notificator = new Notificator();
+let notificator;
+
+try {
+  notificator = new Notificator();
+} catch (e) {
+  console.log(e);
+}
 
 const run = async () => {
   try {
