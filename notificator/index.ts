@@ -16,6 +16,7 @@ export default class Notificator {
             this.serviceBot = new TelegramBot(serviceBotToken, {polling: true});
             this.bot = new TelegramBot(botToken, {polling: true});
         } catch (e) {
+            console.log(1111);
             console.log(e);
         }
         this.serviceBot.on('message', (msg) => {
