@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api';
 import { CarData } from '../parser/types';
 
-const serviceBotToken = '1818588017:AAFTvYIPabjaYi14mqgi5F2IS_Zn37kdW0o';
+const serviceBotToken = '1818588017:AAGVOoSX7ozw_Rok3MaUCi4QjmbYrfR7pqo';
 const botToken = '1849117038:AAFiMLzJ91RI38wJlVgK1gLttlVim3gzDOk';
 const serviceBotChatId = '416295621';
 const channelChatId = '-1001171392842';
@@ -12,13 +12,9 @@ export default class Notificator {
     private dataRequested;
 
     constructor() {
-        try {
-            this.serviceBot = new TelegramBot(serviceBotToken, {polling: true});
-            this.bot = new TelegramBot(botToken, {polling: true});
-        } catch (e) {
-            console.log(1111);
-            console.log(e);
-        }
+        this.serviceBot = new TelegramBot(serviceBotToken, {polling: true});
+        this.bot = new TelegramBot(botToken, {polling: true});
+
         this.serviceBot.on('message', (msg) => {
             console.log('=======ServiceBot=======chatId', msg.chat.id);
             console.log('=======ServiceBot=======msg', msg.text);
